@@ -152,7 +152,7 @@
     "ceaser-easing": "^1.0.1",
     "circuit-breaker-js": "^0.0.1",
     "clsx": "^1.0.4",
-    "core-js": "^3.0.0",
+    "core-js": "^3.3.3",
     "fast-copy": "^2.0.1",
     "fast-equals": "^2.0.0",
     "i18next": "^17.0.13",
