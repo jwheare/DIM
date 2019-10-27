@@ -74,11 +74,15 @@ export default function Sheet({
    * Closing the sheet sets closing to true and starts an animation to close. We only fire the
    * outer callback when the animation is done.
    */
-  const onClose = useCallback(() => {
-    closing.current = true;
-    // Animate offscreen
-    setSpring({ to: { transform: `translateY(${height()}px)` } });
-  }, [setSpring]);
+  const onClose = useCallback(
+    (e?) => {
+      e && e.stopPropagation();
+      closing.current = true;
+      // Animate offscreen
+      setSpring({ to: { transform: `translateY(${height()}px)` } });
+    },
+    [setSpring]
+  );
 
   // Handle global escape key
   useGlobalEscapeKey(onClose);
@@ -130,6 +134,7 @@ export default function Sheet({
       style={{ ...springProps, maxHeight, touchAction: 'none' }}
       className={clsx('sheet', sheetClassName)}
       ref={sheet}
+      onClick={(e) => e.stopPropagation()}
       role="dialog"
       aria-modal="false"
     >
